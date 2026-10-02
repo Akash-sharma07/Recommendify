@@ -96,6 +96,8 @@ Movie posters are retrieved using the TMDB API.
 ## How It Works
 
 ### Book Content-Based Recommendation
+
+```text
 Book Data
     ↓
 Data Cleaning
