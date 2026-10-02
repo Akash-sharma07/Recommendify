@@ -1,0 +1,211 @@
+{% extends "base.html" %}
+
+{% block title %}
+Books | Recommendify
+{% endblock %}
+
+
+{% block content %}
+
+<main class="books-page">
+
+    <!-- ================= HERO ================= -->
+
+    <section class="books-hero">
+
+        <div class="books-hero-content">
+
+            <p class="section-label">BOOK RECOMMENDATIONS</p>
+
+            <h1>
+                Find Your Next
+                <span>Favorite Book</span>
+            </h1>
+
+            <p>
+                Explore popular books or get recommendations
+                based on content and user preferences.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= RECOMMENDATION TYPES ================= -->
+
+    <section class="recommendation-section">
+
+        <div class="section-heading">
+
+            <p class="section-label">
+                EXPLORE BOOKS
+            </p>
+
+            <h2>
+                Choose Your Recommendation
+            </h2>
+
+            <p>
+                Select how you want to discover your next book.
+            </p>
+
+        </div>
+        
+    </section>
+
+    <section class="recommendation-types">
+
+        <!-- Top 50 -->
+        <div class="recommendation-card">
+
+            <div class="card-icon">
+                <img src="{{ url_for('static', filename='images/top-books-icon.png') }}"
+                    alt="Top 50 Books">
+            </div>
+
+            <h3>Top 50 Books</h3>
+
+            <p>
+                Explore the most popular books.
+            </p>
+
+            <a href="{{ url_for('top_books') }}" class="card-button">
+                View Top 50
+            </a>
+
+        </div>
+
+
+        <!-- Content Based -->
+        <div class="recommendation-card">
+
+            <div class="card-icon">
+                <img src="{{ url_for('static', filename='images/feature-search.png') }}"
+                    alt="Content Based">
+            </div>
+
+            <h3>Content Based</h3>
+
+            <p>
+                Get recommendations based<br>
+                on book's content.
+            </p>
+
+            <a href="{{ url_for('content_books') }}" class="card-button">
+                Get Recommendations
+            </a>
+
+        </div>
+
+
+        <!-- Collaborative -->
+        <div class="recommendation-card">
+
+            <div class="card-icon">
+                <img src="{{ url_for('static', filename='images/feature-users.png') }}"
+                    alt="Collaborative Filtering">
+            </div>
+
+            <h3>Collaborative Filtering</h3>
+
+            <p>
+                Get recommendations based<br>
+                on similar users.
+            </p>
+
+            <a href="{{ url_for('collaborative_books') }}" class="card-button">
+                Get Recommendations
+            </a>
+
+        </div>
+
+    </section>
+
+    <!-- ================= BOOK PREVIEW ================= -->
+
+    <section class="book-preview">
+
+        <div class="preview-heading">
+
+            <div>
+                <p class="section-label">
+                    POPULAR
+                </p>
+
+                <h2>
+                    Popular Books
+                </h2>
+            </div>
+
+            <a href="{{ url_for('top_books') }}">
+                View All →
+            </a>
+
+        </div>
+
+
+        <!--
+        Later replace these static cards
+        with Flask/Jinja data from your model.
+        -->
+
+        <div class="book-grid">
+
+            {% if books %}
+
+                {% for book in books %}
+
+                <div class="book-card">
+
+                    <div class="book-cover">
+
+                        <img src="{{ book['Image-URL-L'] }}"
+                             alt="{{ book.title }}">
+
+                    </div>
+
+                    <div class="book-info">
+
+                        <h3>
+                            {{ book['Book-Title'] }}
+                        </h3>
+
+                        <p>
+                            {{ book['Book-Author'] }}
+                        </p>
+
+                        {% if book['Avg_Rating'] %}
+                        <div class="book-rating">
+                            ★ {{ book['Avg_Rating'] | round(1) }}
+                        </div>
+                        {% endif %}
+
+                    </div>
+
+                </div>
+
+                {% endfor %}
+
+            {% else %}
+
+                <div class="empty-books">
+
+                    <i class="bi bi-book"></i>
+
+                    <p>
+                        Select a recommendation method
+                        to discover books.
+                    </p>
+
+                </div>
+
+            {% endif %}
+
+        </div>
+
+    </section>
+
+</main>
+
+{% endblock %}

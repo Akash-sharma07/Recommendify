@@ -1,0 +1,371 @@
+/* =========================
+   TOP BOOKS PAGE
+========================= */
+
+.top-books-page {
+    min-height: 100vh;
+    background: #f5f8fc;
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.top-books-hero {
+    min-height: 250px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    padding: 50px 20px;
+
+    background:
+        linear-gradient(
+            rgba(3, 20, 38, 0.35),
+            rgba(3, 20, 38, 0.58)
+        ),
+        linear-gradient(
+            135deg,
+            #062746,
+            #0b3152
+        );
+}
+
+
+.top-books-hero-content {
+    max-width: 700px;
+}
+
+
+.section-label {
+    color: #4f8cff;
+
+    font-size: 12px;
+    font-weight: 700;
+
+    letter-spacing: 2px;
+
+    margin-bottom: 15px;
+}
+
+
+.top-books-hero h1 {
+    margin: 0 0 14px;
+
+    color: white;
+
+    font-size: 42px;
+    font-weight: 700;
+}
+
+
+.top-books-hero h1 span {
+    color: #5c9cff;
+}
+
+
+.top-books-hero p:last-child {
+    margin: 0;
+
+    color: #c8d6e5;
+
+    font-size: 14px;
+
+    line-height: 1.7;
+}
+
+
+/* =========================
+   BOOK SECTION
+========================= */
+
+.back-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 25px;
+
+    padding: 9px 18px;
+
+    background: #ffffff;
+    color: #2878ed;
+
+    border: 1px solid #2878ed;
+    border-radius: 7px;
+
+    font-size: 12px;
+    font-weight: 600;
+
+    text-decoration: none;
+
+    transition: all 0.25s ease;
+}
+
+.back-button:hover {
+    background: #2878ed;
+    color: #ffffff;
+
+    transform: translateX(-2px);
+
+    box-shadow: 0 5px 14px rgba(40, 120, 237, 0.20);
+}
+
+.books-section {
+    width: 90%;
+    max-width: 1200px;
+
+    margin: auto;
+
+    padding: 55px 0 80px;
+}
+
+
+/* =========================
+   HEADING
+========================= */
+
+.books-heading {
+    display: flex;
+
+    align-items: end;
+
+    justify-content: space-between;
+
+    margin-bottom: 30px;
+}
+
+
+.books-heading h2 {
+    margin: 0;
+
+    color: #172b42;
+
+    font-size: 29px;
+}
+
+
+.book-count {
+    padding: 7px 14px;
+
+    background: #eaf2ff;
+
+    color: #397fea;
+
+    border-radius: 20px;
+
+    font-size: 13px;
+
+    font-weight: 600;
+}
+
+
+/* =========================
+   BOOK GRID
+========================= */
+
+.top-books-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(5, 1fr);
+
+    gap: 22px;
+}
+
+
+/* =========================
+   BOOK CARD
+========================= */
+
+.top-book-card {
+    overflow: hidden;
+
+    background: white;
+
+    border: 1px solid #e1e8f0;
+
+    border-radius: 10px;
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        border-color 0.25s ease;
+}
+
+
+.top-book-card:hover {
+    transform: translateY(-6px);
+
+    border-color: #b7d0f2;
+
+    box-shadow:
+        0 12px 28px rgba(25, 65, 105, 0.12);
+}
+
+
+/* =========================
+   BOOK COVER
+========================= */
+
+.top-book-cover {
+    width: 100%;
+
+    height: 280px;
+
+    background: #edf1f6;
+
+    overflow: hidden;
+}
+
+
+.top-book-cover img {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: fill;
+
+    transition: transform 0.3s ease;
+}
+
+
+.top-book-card:hover
+.top-book-cover img {
+    transform: scale(1.03);
+}
+
+
+/* =========================
+   BOOK INFO
+========================= */
+
+.top-book-info {
+    padding: 14px 15px 16px;
+}
+
+
+.top-book-info h3 {
+    margin: 0 0 6px;
+
+    color: #172b42;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    line-height: 1.4;
+
+    white-space: nowrap;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+}
+
+
+.book-author {
+    margin: 0 0 10px;
+
+    color: #7a8797;
+
+    font-size: 12px;
+
+    white-space: nowrap;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+}
+
+
+/* =========================
+   RATING
+========================= */
+
+.book-rating {
+    display: flex;
+
+    align-items: center;
+
+    gap: 5px;
+
+    color: #4d5d70;
+
+    font-size: 12px;
+
+    font-weight: 600;
+}
+
+
+.star {
+    color: #f3b51b;
+
+    font-size: 15px;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 1100px) {
+
+    .top-books-grid {
+        grid-template-columns:
+            repeat(4, 1fr);
+    }
+
+}
+
+
+@media (max-width: 850px) {
+
+    .top-books-grid {
+        grid-template-columns:
+            repeat(3, 1fr);
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .top-books-hero h1 {
+        font-size: 32px;
+    }
+
+    .books-section {
+        width: 92%;
+
+        padding-top: 40px;
+    }
+
+    .top-books-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
+
+        gap: 15px;
+    }
+
+    .top-book-cover {
+        height: 240px;
+    }
+
+}
+
+
+@media (max-width: 400px) {
+
+    .top-books-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .top-book-cover {
+        height: 300px;
+    }
+
+}

@@ -1,0 +1,488 @@
+{% extends "base.html" %}
+
+{% block title %}
+About | Recommendify
+{% endblock %}
+
+{% block extra_css %}
+
+<link rel="stylesheet"
+      href="{{ url_for('static', filename='about.css') }}">
+
+<link rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
+{% endblock %}
+
+
+{% block content %}
+
+<main class="about-page">
+
+    <!-- ================= HERO ================= -->
+
+    <section class="about-hero">
+
+        <div class="about-hero-content">
+
+            <p class="section-label">
+                ABOUT RECOMMENDIFY
+            </p>
+
+            <h1>
+                Built to Make
+                <span>Finding Something Good Easier.</span>
+            </h1>
+
+            <p>
+                Recommendify is a project I built to bring my
+                book and movie recommendation systems together
+                in one simple application.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= MAIN CONTENT ================= -->
+
+    <section class="about-container">
+
+        <!-- BACK -->
+
+        <a href="{{ url_for('home') }}" class="back-button">
+
+            <i class="bi bi-arrow-left"></i>
+
+            Back to Home
+
+        </a>
+
+
+        <!-- ================= STORY ================= -->
+
+        <section class="story-section">
+
+            <div class="story-heading">
+
+                <p class="section-label">
+                    THE IDEA
+                </p>
+
+                <h2>
+                    Why I Built Recommendify
+                </h2>
+
+            </div>
+
+
+            <div class="story-content">
+
+                <p>
+                    I enjoy working on projects where machine
+                    learning can be used to solve a practical
+                    problem. Recommendation systems were one of
+                    those projects that helped me understand how
+                    data and machine learning can be turned into
+                    something people can actually use.
+                </p>
+
+                <p>
+                    I had already worked on separate book and
+                    movie recommendation projects, so I decided
+                    to bring them together and build a single
+                    web application around them.
+                </p>
+
+                <p>
+                    That became Recommendify.
+                </p>
+
+                <p>
+                    The goal was not to make a complicated
+                    application. I wanted to keep the interface
+                    simple while letting the recommendation
+                    models do the interesting part in the
+                    background.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= FEATURES ================= -->
+
+        <section class="project-section">
+
+            <div class="section-heading">
+
+                <p class="section-label">
+                    WHAT'S INSIDE
+                </p>
+
+                <h2>
+                    Two Recommendation Systems
+                </h2>
+
+                <p>
+                    Recommendify currently brings together
+                    different recommendation approaches for
+                    books and movies.
+                </p>
+
+            </div>
+
+
+            <div class="project-grid">
+
+                <!-- BOOKS -->
+
+                <article class="project-card">
+
+                    <div class="project-icon">
+                        <i class="bi bi-book"></i>
+                    </div>
+
+                    <span class="project-number">
+                        01
+                    </span>
+
+                    <h3>
+                        Book Recommendations
+                    </h3>
+
+                    <p>
+                        Explore books through multiple
+                        recommendation approaches, including
+                        Top 50 Books, Content-Based
+                        Recommendation, and Collaborative
+                        Recommendation.
+                    </p>
+
+                    <a href="{{ url_for('books') }}"
+                       class="project-link">
+
+                        Explore Books
+
+                        <i class="bi bi-arrow-right"></i>
+
+                    </a>
+
+                </article>
+
+
+                <!-- MOVIES -->
+
+                <article class="project-card">
+
+                    <div class="project-icon">
+                        <i class="bi bi-film"></i>
+                    </div>
+
+                    <span class="project-number">
+                        02
+                    </span>
+
+                    <h3>
+                        Movie Recommendations
+                    </h3>
+
+                    <p>
+                        Select a movie and discover similar
+                        movies using a content-based
+                        recommendation system built from
+                        movie metadata.
+                    </p>
+
+                    <a href="{{ url_for('movies') }}"
+                       class="project-link">
+
+                        Explore Movies
+
+                        <i class="bi bi-arrow-right"></i>
+
+                    </a>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= HOW IT WORKS ================= -->
+
+        <section class="how-section">
+
+            <div class="how-heading">
+
+                <p class="section-label">
+                    HOW IT WORKS
+                </p>
+
+                <h2>
+                    The Idea Behind the Recommendations
+                </h2>
+
+            </div>
+
+
+            <div class="steps">
+
+                <div class="step">
+
+                    <span class="step-number">
+                        01
+                    </span>
+
+                    <div>
+
+                        <h3>
+                            Choose
+                        </h3>
+
+                        <p>
+                            Select a book or movie that you
+                            already like.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="step">
+
+                    <span class="step-number">
+                        02
+                    </span>
+
+                    <div>
+
+                        <h3>
+                            Analyze
+                        </h3>
+
+                        <p>
+                            The recommendation system compares
+                            information from the available
+                            dataset.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="step">
+
+                    <span class="step-number">
+                        03
+                    </span>
+
+                    <div>
+
+                        <h3>
+                            Recommend
+                        </h3>
+
+                        <p>
+                            Similar or related books and movies
+                            are shown as recommendations.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= TECH ================= -->
+
+        <section class="tech-section">
+
+            <div class="tech-heading">
+
+                <p class="section-label">
+                    TECHNOLOGY
+                </p>
+
+                <h2>
+                    What I Used to Build It
+                </h2>
+
+            </div>
+
+
+            <div class="tech-content">
+
+                <p>
+                    The project combines machine learning with
+                    a simple web interface. The main technologies
+                    I used are:
+                </p>
+
+                <div class="tech-list">
+
+                    <span>Python</span>
+
+                    <span>Pandas</span>
+
+                    <span>NumPy</span>
+
+                    <span>Scikit-learn</span>
+
+                    <span>Machine Learning</span>
+
+                    <span>Flask</span>
+
+                    <span>HTML</span>
+
+                    <span>CSS</span>
+
+                    <span>TMDB API</span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= DEVELOPER ================= -->
+
+        <section class="developer-section">
+
+            <div class="developer-text">
+
+                <p class="section-label">
+                    THE DEVELOPER
+                </p>
+
+                <h2>
+                    A Project From My Learning Journey
+                </h2>
+
+                <p>
+                    I'm Akash Sharma, and I'm currently building
+                    my skills in Data Science, Machine Learning,
+                    Artificial Intelligence, and Generative AI.
+                </p>
+
+                <p>
+                    Projects like Recommendify help me go beyond
+                    learning concepts and actually build things
+                    with them.
+                </p>
+
+                <p>
+                    There is always something I can improve,
+                    whether it is the model, the interface,
+                    or the overall user experience. That's
+                    also what makes building projects fun for me.
+                </p>
+
+                <div class="developer-links">
+
+                    <a href="https://github.com/Akash-sharma07"
+                       target="_blank"
+                       rel="noopener noreferrer">
+
+                        <i class="bi bi-github"></i>
+
+                        GitHub
+
+                    </a>
+
+
+                    <a href="https://www.linkedin.com/in/akash-sharma8017/"
+                       target="_blank"
+                       rel="noopener noreferrer">
+
+                        <i class="bi bi-linkedin"></i>
+
+                        LinkedIn
+
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <div class="developer-card">
+
+                <div class="developer-icon">
+
+                    <i class="bi bi-cpu"></i>
+
+                </div>
+
+                <h3>
+                    Recommendify
+                </h3>
+
+                <p>
+                    Books + Movies
+                    <br>
+                    Machine Learning
+                    <br>
+                    Flask Web Application
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= CTA ================= -->
+
+        <section class="about-cta">
+
+            <p class="section-label">
+                EXPLORE THE PROJECT
+            </p>
+
+            <h2>
+                See the Recommendations in Action
+            </h2>
+
+            <p>
+                Explore the book and movie recommendation
+                systems and see what they recommend.
+            </p>
+
+            <div class="cta-buttons">
+
+                <a href="{{ url_for('books') }}"
+                   class="primary-button">
+
+                    Explore Books
+
+                    <i class="bi bi-arrow-right"></i>
+
+                </a>
+
+                <a href="{{ url_for('movies') }}"
+                   class="secondary-button">
+
+                    Explore Movies
+
+                    <i class="bi bi-arrow-right"></i>
+
+                </a>
+
+            </div>
+
+        </section>
+
+    </section>
+
+</main>
+
+{% endblock %}

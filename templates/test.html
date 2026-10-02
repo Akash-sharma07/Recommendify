@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <main>
+        <section class="hero">
+
+            <div class="hero-overlay"></div>
+            
+            <div class="hero-content">
+
+                <h1>
+                    Discover Your 
+                    <span>Next Favorite</span>
+                </h1>
+                <p>
+                    Books and Movies recommendations,
+                    powered by Machine Learning.
+                </p>
+
+                <div class="recommendation-cards">
+                    <div class="books-card">
+                        <div class="books-icon">icon</div>
+                        <h2> Explore Books</h2>
+                        <p>Top 50, Content-Based, Collaborative</p>
+                        <button>
+                            <a href="{{url_for('books')}}">go to books</a>
+                        </button>
+                    </div>
+
+                    <div class="Movies-card">
+                        <div class="Movies-icon">icon</div>
+                        <h2>Explore Movies</h2>
+                        <p>Personalized Movie Recommendation </p>
+                        <button>
+                            <a href="{{url_for(movies)}}">Go to Movies</a>
+                        </button>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="feature-section">
+            <div class="feature">
+                <div class="feature-icon">feature Icon</div>
+                <div>
+                    <h3>Personalized Picks</h3>
+                    <p>Based on your interests</p>
+                </div>
+            </div>
+
+            <div class="feature">
+                <div class="feature-icon">feature Icon</div>
+                <div>
+                    <h3>Multiple Algorithms</h3>
+                    <p>Content-based & Collaborative</p>
+                </div>
+            </div>
+
+            <div class="feature">
+                <div class="feature-icon">feature Icon</div>
+                <div>
+                    <h3>Simple & Clean Interface</h3>
+                    <p>Easy to explore</p>
+                </div>
+                
+
+            </div>
+            <div class="feature">
+                <div class="feature-icon">feature Icon</div>
+                <div>
+                    <h3>Discover Something New</h3>
+                    <p>Books and movies you'll love</p>
+                </div>
+                
+
+            </div>
+        </section>
+    </main>
+</body>
+</html>

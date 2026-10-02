@@ -1,0 +1,127 @@
+{% extends "base.html" %}
+
+{% block title %}
+Top 50 Books | Recommendify
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet"
+      href="{{ url_for('static', filename='css/top_books.css') }}">
+{% endblock %}
+
+
+{% block content %}
+
+<main class="top-books-page">
+
+    <!-- ================= HERO ================= -->
+
+    <section class="top-books-hero">
+
+        <div class="top-books-hero-content">
+
+            <p class="section-label">
+                RECOMMENDIFY COLLECTION
+            </p>
+
+            <h1>
+                Top <span>50 Books</span>
+            </h1>
+
+            <p>
+                Explore the most popular and highly rated books
+                from our collection.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= BOOKS ================= -->
+
+    <section class="books-section">
+
+        <a href="{{ url_for('books') }}" class="back-button">
+            ← Back to Books
+        </a>
+
+        <div class="books-heading">
+
+            <div>
+                <p class="section-label">
+                    POPULAR BOOKS
+                </p>
+
+                <h2>
+                    Top 50 Books
+                </h2>
+            </div>
+
+            <span class="book-count">
+                {{ books|length }} Books
+            </span>
+
+        </div>
+
+
+        <!-- BOOK GRID -->
+
+        <div class="top-books-grid">
+
+            {% for book in books %}
+
+            <div class="top-book-card">
+
+                <!-- Book Image -->
+
+                <div class="top-book-cover">
+
+                    <img
+                        src="{{ book['Image-URL-L'] }}"
+                        alt="{{ book['Book-Title'] }}"
+                    >
+
+                </div>
+
+
+                <!-- Book Details -->
+
+                <div class="top-book-info">
+
+                    <h3 title="{{ book['Book-Title'] }}">
+                        {{ book['Book-Title'] }}
+                    </h3>
+
+                    <p class="book-author">
+                        {{ book['Book-Author'] }}
+                    </p>
+
+
+                    <!-- Rating -->
+
+                    <div class="book-rating">
+
+                        <span class="star">
+                            ★
+                        </span>
+
+                        <span>
+                            {{ book['Avg_Rating'] | round(1) }}
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+    </section>
+
+</main>
+
+{% endblock %}

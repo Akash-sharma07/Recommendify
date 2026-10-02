@@ -1,0 +1,126 @@
+{% extends "base.html" %}
+
+{% block title %}
+Home Page
+{% endblock %}
+
+{% block content %}
+
+<main>
+
+    <section class="hero">
+
+        <div class="hero-overlay"></div>
+
+        <div class="hero-content">
+
+            <h1>
+                Discover Your
+                <span>Next Favorite</span>
+            </h1>
+
+            <p>
+                Books and Movies recommendations,
+                powered by Machine Learning.
+            </p>
+
+            <div class="recommendation-cards">
+
+                <div class="books-card">
+                    <div class="books-icon">
+                        <img src="{{ url_for('static', filename='images/books-icon.png')}}" alt="Books-Icon">
+                    </div>
+
+                    <h2>Explore Books</h2>
+
+                    <p>
+                        Top 50, Content-Based, Collaborative
+                    </p>
+
+                    <a href="{{ url_for('books') }}" class="card-btn">
+                        Go to Books
+                        <i class="bi bi-arrow-right"></i>
+                    </a>
+                </div>
+
+
+                <div class="Movies-card">
+
+                    <div class="Movies-icon">
+                        <img src="{{ url_for('static', filename='images/movies-icon.png')}}" alt="Movie-Icon">
+                    </div>
+
+                    <h2>Explore Movies</h2>
+
+                    <p>
+                        Personalized Movie Recommendation
+                    </p>
+
+                    <a href="{{ url_for('movies') }}" class="card-btn">
+                        Go to Movies
+                        <i class="bi bi-arrow-right"></i>
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section class="feature-section">
+
+        <div class="feature">
+            <div class="feature-icon">
+                <img src="{{url_for('static', filename='images/feature-star.png')}}" alt="star-icon">
+            </div>
+
+            <div>
+                <h3>Personalized Picks</h3>
+                <p>Based on your interests</p>
+            </div>
+        </div>
+
+
+        <div class="feature">
+            <div class="feature-icon">
+                <img src="{{url_for('static', filename='images/feature-users.png')}}" alt="user-icon">
+            </div>
+
+            <div>
+                <h3>Multiple Algorithms</h3>
+                <p>Content-based & Collaborative</p>
+            </div>
+        </div>
+
+
+        <div class="feature">
+            <div class="feature-icon">
+                <img src="{{url_for('static', filename='images/feature-interface.png')}}" alt="interface-icon">
+            </div>
+
+            <div>
+                <h3>Simple & Clean Interface</h3>
+                <p>Easy to explore</p>
+            </div>
+        </div>
+
+
+        <div class="feature">
+            <div class="feature-icon">
+                <img src="{{url_for('static', filename='images/feature-search.png')}}" alt="search-icon">
+            </div>
+
+            <div>
+                <h3>Discover Something New</h3>
+                <p>Books and movies you'll love</p>
+            </div>
+        </div>
+
+    </section>
+
+</main>
+
+{% endblock %}

@@ -1,0 +1,10 @@
+# Virtual Environment
+myvenv/
+venv/
+__pycache__/
+
+# Raw Datasets (not needed in production)
+Data/*.csv
+
+# Environment variables
+.env

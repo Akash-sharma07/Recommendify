@@ -1,0 +1,452 @@
+{% extends "base.html" %}
+
+{% block title %}
+Content-Based Recommendation | Recommendify
+{% endblock %}
+
+
+{% block extra_css %}
+
+<link rel="stylesheet"
+      href="{{ url_for('static', filename='css/content_books.css') }}">
+
+<!-- Bootstrap Icons -->
+<link rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
+{% endblock %}
+
+
+{% block content %}
+
+<main class="content-page">
+
+    <!-- =====================================================
+         HERO SECTION
+    ====================================================== -->
+
+    <section class="content-hero">
+
+        <div class="content-hero-content">
+
+            <p class="section-label">
+                CONTENT-BASED RECOMMENDATION
+            </p>
+
+            <h1>
+                Find Books Similar To
+                <span>What You Like</span>
+            </h1>
+
+            <p>
+                Search for a book and discover similar books
+                based on its content.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         MAIN CONTENT
+    ====================================================== -->
+
+    <section class="content-container">
+
+
+        <!-- BACK BUTTON -->
+
+        <a href="{{ url_for('books') }}"
+           class="back-button">
+
+            <i class="bi bi-arrow-left"></i>
+
+            Back to Books
+
+        </a>
+
+
+
+        <!-- =================================================
+             SEARCH CARD
+        ================================================== -->
+
+        <div class="search-card">
+
+            <div class="search-heading">
+
+                <p class="section-label">
+                    FIND A BOOK
+                </p>
+
+                <h2>
+                    Search Book Title
+                </h2>
+
+                <p>
+                    Enter part of a book title and search
+                    through the available books.
+                </p>
+
+            </div>
+
+
+            <!-- SEARCH FORM -->
+
+            <form method="GET"
+                  action="{{ url_for('content_books') }}"
+                  class="search-form">
+
+                <div class="search-input-wrapper">
+
+                    <i class="bi bi-search"></i>
+
+                    <input
+                        type="text"
+                        name="q"
+                        value="{{ query }}"
+                        placeholder="Enter book title..."
+                        autocomplete="off"
+                        required
+                    >
+
+                </div>
+
+
+                <button type="submit"
+                        class="search-button">
+
+                    Search
+
+                    <i class="bi bi-search"></i>
+
+                </button>
+
+            </form>
+
+        </div>
+
+
+
+        <!-- =================================================
+             ERROR MESSAGE
+        ================================================== -->
+
+        {% if error %}
+
+        <div class="error-message">
+
+            <i class="bi bi-exclamation-circle"></i>
+
+            <span>
+                {{ error }}
+            </span>
+
+        </div>
+
+        {% endif %}
+
+        <section class="results-section">
+
+
+            <!-- =============================================
+                 RECOMMENDATIONS
+            ============================================== -->
+
+            {% if recommendations %}
+
+                <div class="section-heading">
+
+                    <div>
+
+                        <p class="section-label">
+                            RECOMMENDATIONS
+                        </p>
+
+                        <h2>
+                            Books Similar To
+                        </h2>
+
+                        <p class="selected-title">
+                            "{{ selected_book }}"
+                        </p>
+
+                    </div>
+
+
+                    <div class="result-count">
+
+                        {{ recommendations|length }} Books
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- RECOMMENDATION GRID -->
+
+                <div class="recommendation-grid">
+
+                    {% for book in recommendations %}
+
+                    <article class="recommendation-card">
+
+
+                        <!-- BOOK IMAGE -->
+
+                        <div class="book-image">
+
+                            <img
+                                src="{{ book['imgUrl'] }}"
+                                alt="{{ book['title'] }}"
+                                loading="lazy"
+                            >
+
+                        </div>
+
+
+
+                        <!-- BOOK DETAILS -->
+
+                        <div class="book-details">
+
+                            <h3 title="{{ book['title'] }}">
+                                {{ book['title'] }}
+                            </h3>
+
+
+                            <p class="author">
+                                {{ book['author'] }}
+                            </p>
+
+
+
+                            <!-- META -->
+
+                            <div class="book-meta">
+
+                                <span class="rating">
+
+                                    <i class="bi bi-star-fill"></i>
+
+                                    {{ "%.1f"|format(book['stars']) }}
+
+                                </span>
+
+
+                                <span class="category">
+
+                                    {{ book['category_name'] }}
+
+                                </span>
+
+                            </div>
+
+
+                        </div>
+
+                    </article>
+
+                    {% endfor %}
+
+                </div>
+
+
+
+                <!-- SEARCH AGAIN -->
+
+                <div class="search-again">
+
+                    <a href="{{ url_for('content_books') }}"
+                       class="search-again-button">
+
+                        <i class="bi bi-arrow-left"></i>
+
+                        Search Another Book
+
+                    </a>
+
+                </div>
+
+
+
+            <!-- =============================================
+                 SEARCH RESULTS
+            ============================================== -->
+
+            {% elif search_results %}
+
+                <div class="section-heading">
+
+                    <div>
+
+                        <p class="section-label">
+                            SEARCH RESULTS
+                        </p>
+
+                        <h2>
+                            Books Found
+                        </h2>
+
+                        <p>
+                            Select one book to get similar
+                            recommendations.
+                        </p>
+
+                    </div>
+
+
+                    <div class="result-count">
+
+                        {{ search_results|length }} Results
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- SEARCH RESULTS LIST -->
+
+                <div class="search-results-list">
+
+                    {% for book in search_results %}
+
+                    <div class="search-result-card">
+
+
+                        <!-- IMAGE -->
+
+                        <div class="search-result-image">
+
+                            <img
+                                src="{{ book['imgUrl'] }}"
+                                alt="{{ book['title'] }}"
+                                loading="lazy"
+                            >
+
+                        </div>
+
+
+
+                        <!-- BOOK INFO -->
+
+                        <div class="search-result-info">
+
+                            <h3 title="{{ book['title'] }}">
+
+                                {{ book['title'] }}
+
+                            </h3>
+
+
+                            <p>
+                                {{ book['author'] }}
+                            </p>
+
+
+                            <span class="search-result-rating">
+
+                                <i class="bi bi-star-fill"></i>
+
+                                {{ "%.1f"|format(book['stars']) }}
+
+                            </span>
+
+                        </div>
+
+
+
+                        <!-- SELECT BUTTON -->
+
+                        <form method="POST"
+                              action="{{ url_for('content_books') }}"
+                              class="select-form">
+
+                            <input
+                                type="hidden"
+                                name="book_title"
+                                value="{{ book['title'] }}"
+                            >
+
+                            <button type="submit"
+                                    class="select-button">
+
+                                Select
+
+                                <i class="bi bi-arrow-right"></i>
+
+                            </button>
+
+                        </form>
+
+
+                    </div>
+
+                    {% endfor %}
+
+                </div>
+
+
+            <!-- =============================================
+                 NO SEARCH RESULTS
+            ============================================== -->
+
+            {% elif query %}
+
+                <div class="no-results">
+
+                    <div class="no-results-icon">
+
+                        <i class="bi bi-book"></i>
+
+                    </div>
+
+                    <h3>
+                        No Books Found
+                    </h3>
+
+                    <p>
+                        Try searching with another book title
+                        or keyword.
+                    </p>
+
+                </div>
+
+
+            <!-- =============================================
+                 INITIAL STATE
+            ============================================== -->
+
+            {% else %}
+
+                <div class="initial-state">
+
+                    <div class="initial-icon">
+
+                        <i class="bi bi-book-half"></i>
+
+                    </div>
+
+                    <h3>
+                        Search for a Book
+                    </h3>
+
+                    <p>
+                        Enter a book title above to find
+                        similar books.
+                    </p>
+
+                </div>
+
+            {% endif %}
+
+        </section>
+
+    </section>
+
+</main>
+
+{% endblock %}
